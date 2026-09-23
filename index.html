@@ -1803,7 +1803,516 @@ plt.show()</code></pre>
         <strong>data analytics, business intelligence, information
         systems, data science, and machine learning</strong>.
     </p>
+<!-- ===================================================== -->
+<!-- HOMEWORK ASSIGNMENT -->
+<!-- ===================================================== -->
 
+<h2>Homework Assignment: Pandas CSV Data Analysis &amp; Visualization</h2>
+
+<p>
+    In the lab, you learned how to import a CSV file into Pandas,
+    analyze the data, perform calculations, and create visualizations
+    using Matplotlib.
+</p>
+
+<p>
+    For this homework assignment, you will apply those skills
+    independently to a new business dataset.
+</p>
+
+<div class="objective">
+
+    <h3>Assignment Objective</h3>
+
+    <p>
+        Your goal is to demonstrate that you can complete a basic
+        data analytics workflow using Python:
+    </p>
+
+    <pre><code>CSV File
+   ↓
+Pandas
+   ↓
+DataFrame
+   ↓
+Data Analysis
+   ↓
+Calculated Values
+   ↓
+Data Visualization
+   ↓
+Business Conclusions</code></pre>
+
+</div>
+
+
+<h3>Business Scenario</h3>
+
+<p>
+    You have been hired as a junior data analyst for a retail company.
+    Management has provided you with sales information from three
+    store locations.
+</p>
+
+<p>
+    Your job is to analyze the information and prepare a short
+    report explaining what you discovered.
+</p>
+
+
+<h3>Dataset</h3>
+
+<p>
+    Create a CSV file named:
+</p>
+
+<pre><code>retail_sales.csv</code></pre>
+
+<p>
+    Copy the following data into the CSV file:
+</p>
+
+<pre><code>Month,Location,Sales,Expenses,Customers
+January,Pittsburgh,24500,15200,420
+January,Washington,18750,12100,315
+January,Canonsburg,16200,10800,280
+February,Pittsburgh,26800,15900,455
+February,Washington,20100,12600,340
+February,Canonsburg,17500,11200,295
+March,Pittsburgh,29200,16800,490
+March,Washington,22300,13100,375
+March,Canonsburg,19100,11800,320
+April,Pittsburgh,31500,17500,525
+April,Washington,24100,13900,405
+April,Canonsburg,20800,12400,350</code></pre>
+
+
+<h3>Part 1: Create Your Notebook</h3>
+
+<p>
+    Create a new Jupyter Notebook and name it:
+</p>
+
+<pre><code>Lastname_Retail_Sales_Analysis.ipynb</code></pre>
+
+<p>
+    Replace <code>Lastname</code> with your actual last name.
+</p>
+
+
+<h3>Part 2: Import the Required Libraries</h3>
+
+<p>
+    Import Pandas and Matplotlib.
+</p>
+
+<p>
+    You will need to determine the correct Python statements
+    based on what you learned during the lab.
+</p>
+
+<div class="note">
+    <strong>Hint:</strong>
+    Review the lab if you do not remember how to import Pandas
+    using <code>pd</code> or Matplotlib using <code>plt</code>.
+</div>
+
+
+<h3>Part 3: Import the CSV File</h3>
+
+<p>
+    Upload <code>retail_sales.csv</code> into your
+    Anaconda/Jupyter environment.
+</p>
+
+<p>
+    Use Pandas to import the CSV file into a DataFrame named:
+</p>
+
+<pre><code>df</code></pre>
+
+<p>
+    Do not manually enter the dataset into your Python program.
+    Your program must read the information from the CSV file.
+</p>
+
+
+<h3>Part 4: Inspect Your Dataset</h3>
+
+<p>
+    Use Pandas commands to complete the following:
+</p>
+
+<ol>
+    <li>Display the first five records.</li>
+    <li>Display information about the DataFrame.</li>
+    <li>Display descriptive statistics.</li>
+    <li>Display all column names.</li>
+    <li>Determine the number of rows and columns.</li>
+</ol>
+
+<div class="question">
+    <strong>Question:</strong>
+    How many rows and columns are contained in the dataset?
+</div>
+
+
+<h3>Part 5: Sales Analysis</h3>
+
+<p>
+    Write Python/Pandas code that answers each of the following
+    business questions.
+</p>
+
+<ol>
+    <li>
+        What are the <strong>total sales</strong> for the entire
+        dataset?
+    </li>
+
+    <li>
+        What are the <strong>average sales</strong> per record?
+    </li>
+
+    <li>
+        What is the <strong>highest individual sales amount</strong>?
+    </li>
+
+    <li>
+        Which record has the highest sales?
+    </li>
+
+    <li>
+        Display all records where sales are greater than
+        <strong>$20,000</strong>.
+    </li>
+
+    <li>
+        Calculate <strong>total sales by location</strong>.
+    </li>
+
+    <li>
+        Calculate <strong>average sales by location</strong>.
+    </li>
+
+    <li>
+        Calculate <strong>total sales by month</strong>.
+    </li>
+
+    <li>
+        Which location served the most customers overall?
+    </li>
+
+    <li>
+        Which location generated the most total sales?
+    </li>
+</ol>
+
+<div class="important">
+    <strong>Important:</strong>
+    Your notebook must contain the Python code used to determine
+    each answer. Do not simply type the answer.
+</div>
+
+
+<h3>Part 6: Calculate Profit</h3>
+
+<p>
+    Management would now like to analyze profitability.
+</p>
+
+<p>
+    Create a new column named <code>Profit</code>.
+</p>
+
+<p>
+    Profit is calculated as:
+</p>
+
+<pre><code>Profit = Sales - Expenses</code></pre>
+
+<p>
+    Create the column using:
+</p>
+
+<pre><code>df["Profit"] = df["Sales"] - df["Expenses"]</code></pre>
+
+<p>
+    Display the DataFrame after creating the new column.
+</p>
+
+<pre><code>df</code></pre>
+
+
+<h3>Part 7: Analyze Profit</h3>
+
+<p>
+    Using the new <code>Profit</code> column, determine:
+</p>
+
+<ol>
+    <li>Total profit for the entire dataset.</li>
+    <li>Average profit.</li>
+    <li>The highest individual profit.</li>
+    <li>The record with the highest profit.</li>
+    <li>Total profit by location.</li>
+</ol>
+
+
+<h3>Part 8: Visualization #1 – Sales by Location</h3>
+
+<p>
+    Create a <strong>bar chart</strong> showing total sales
+    for each location.
+</p>
+
+<p>Your chart must contain:</p>
+
+<ul>
+    <li>A chart title.</li>
+    <li>An X-axis label.</li>
+    <li>A Y-axis label.</li>
+    <li>One bar for each location.</li>
+</ul>
+
+<div class="note">
+    <strong>Hint:</strong>
+    You may want to use <code>groupby()</code> before creating
+    the chart.
+</div>
+
+
+<h3>Part 9: Visualization #2 – Monthly Sales Trend</h3>
+
+<p>
+    Create a <strong>line chart</strong> showing total sales
+    for each month.
+</p>
+
+<p>
+    Your chart should clearly show the sales trend from:
+</p>
+
+<pre><code>January → February → March → April</code></pre>
+
+<p>
+    Include an appropriate title and axis labels.
+</p>
+
+
+<h3>Part 10: Visualization #3 – Profit by Location</h3>
+
+<p>
+    Create a <strong>bar chart</strong> showing total profit
+    for each location.
+</p>
+
+<p>
+    The purpose of this chart is to allow management to compare
+    profitability between the three locations.
+</p>
+
+
+<h3>Part 11: Visualization #4 – Sales Distribution</h3>
+
+<p>
+    Create either a <strong>pie chart</strong> or
+    <strong>donut chart</strong> showing each location's
+    contribution to total company sales.
+</p>
+
+<p>
+    Your visualization should contain:
+</p>
+
+<ul>
+    <li>Pittsburgh</li>
+    <li>Washington</li>
+    <li>Canonsburg</li>
+</ul>
+
+<p>
+    Display percentages on the chart.
+</p>
+
+
+<h3>Part 12: Management Summary</h3>
+
+<p>
+    At the bottom of your notebook, create a
+    <strong>Markdown cell</strong>.
+</p>
+
+<p>Add the heading:</p>
+
+<pre><code># Management Summary</code></pre>
+
+<p>
+    Write approximately <strong>150–250 words</strong> explaining
+    what you learned from your analysis.
+</p>
+
+<p>Your summary should discuss:</p>
+
+<ul>
+    <li>
+        Which location generated the highest total sales.
+    </li>
+
+    <li>
+        Which location generated the highest total profit.
+    </li>
+
+    <li>
+        The overall sales trend from January through April.
+    </li>
+
+    <li>
+        How sales compare with expenses and profit.
+    </li>
+
+    <li>
+        At least one additional observation you discovered
+        while analyzing the data.
+    </li>
+</ul>
+
+<div class="question">
+    <strong>Think Like an Analyst:</strong>
+    Do not simply repeat numbers from your Python output.
+    Explain what those numbers mean to someone managing the business.
+</div>
+
+
+<h3>Part 13: Final Notebook Organization</h3>
+
+<p>
+    Organize your notebook so that another person can easily
+    understand your work.
+</p>
+
+<p>
+    Use Markdown headings to separate the major sections.
+</p>
+
+<p>For example:</p>
+
+<pre><code># Retail Sales Analysis
+
+## Import Libraries
+
+## Import CSV Data
+
+## Explore the Dataset
+
+## Sales Analysis
+
+## Profit Analysis
+
+## Data Visualizations
+
+## Management Summary</code></pre>
+
+
+<h2>Homework Submission Requirements</h2>
+
+<p>
+    Submit the following two files:
+</p>
+
+<ol>
+    <li>
+        <code>Lastname_Retail_Sales_Analysis.ipynb</code>
+    </li>
+
+    <li>
+        <code>retail_sales.csv</code>
+    </li>
+</ol>
+
+<div class="important">
+    <strong>Before submitting:</strong>
+    Run your entire notebook from beginning to end and verify that
+    all code executes successfully and all charts are displayed.
+</div>
+
+
+<h2>Homework Grading – 100 Points</h2>
+
+<table>
+
+    <tr>
+        <th>Requirement</th>
+        <th>Points</th>
+    </tr>
+
+    <tr>
+        <td>CSV Import and Data Inspection</td>
+        <td>15</td>
+    </tr>
+
+    <tr>
+        <td>Pandas Sales Analysis</td>
+        <td>30</td>
+    </tr>
+
+    <tr>
+        <td>Calculated Profit Analysis</td>
+        <td>15</td>
+    </tr>
+
+    <tr>
+        <td>Four Required Visualizations</td>
+        <td>25</td>
+    </tr>
+
+    <tr>
+        <td>Management Summary</td>
+        <td>10</td>
+    </tr>
+
+    <tr>
+        <td>Notebook Organization and Readability</td>
+        <td>5</td>
+    </tr>
+
+    <tr>
+        <th>Total</th>
+        <th>100</th>
+    </tr>
+
+</table>
+
+
+<div class="success">
+
+    <h3>What You Should Be Able to Do After This Assignment</h3>
+
+    <p>
+        After completing this homework, you should be able to independently
+        take a raw CSV dataset and transform it into useful business
+        information.
+    </p>
+
+    <pre><code>Raw CSV Data
+      ↓
+Import with Pandas
+      ↓
+Inspect the Dataset
+      ↓
+Filter and Analyze
+      ↓
+Calculate New Information
+      ↓
+Group and Summarize
+      ↓
+Visualize with Matplotlib
+      ↓
+Interpret the Results
+      ↓
+Communicate Business Insights</code></pre>
+
+</div>
 </main>
 
 <footer>
