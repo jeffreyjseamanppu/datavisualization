@@ -509,7 +509,776 @@ df</code></pre>
         The <code>index=False</code> option prevents Pandas from writing
         the DataFrame row numbers into the CSV file.
     </p>
+    <!-- ===================================================== -->
+<!-- PART 10 - IMPORTING CSV DATA -->
+<!-- ===================================================== -->
 
+<h2>Part 10: Step-by-Step – Importing a CSV File with Pandas</h2>
+
+<p>
+    So far, we have created data directly inside our Python program.
+    In real-world data analytics, however, data will often come from an
+    external source such as a CSV file, Excel spreadsheet, database,
+    or API.
+</p>
+
+<p>
+    In this section, you will learn how to upload a CSV file into your
+    Anaconda/Jupyter environment and use Pandas to import the data.
+</p>
+
+
+<!-- STEP 1 -->
+
+<h3>
+    <span class="step-number">1</span>
+    Understand the CSV File
+</h3>
+
+<p>
+    <strong>CSV</strong> stands for
+    <strong>Comma-Separated Values</strong>. A CSV file is a text file
+    commonly used to store rows and columns of data.
+</p>
+
+<p>
+    For this lab, we will use a file named:
+</p>
+
+<pre><code>employee_sales.csv</code></pre>
+
+<p>
+    The contents of the file should look similar to:
+</p>
+
+<pre><code>Employee,Department,Sales,Hours_Worked
+Alex,Sales,12500,40
+Maria,IT,8500,38
+Jordan,Sales,15750,45
+Taylor,Marketing,11200,42
+Chris,IT,9300,40
+Morgan,Sales,18400,47</code></pre>
+
+<div class="note">
+    <strong>Notice:</strong> The first row contains the column names.
+    Each row after the first row represents one employee record.
+</div>
+
+
+<!-- STEP 2 -->
+
+<h3>
+    <span class="step-number">2</span>
+    Save or Download the CSV File
+</h3>
+
+<p>
+    Make sure the CSV file is saved on your computer as:
+</p>
+
+<pre><code>employee_sales.csv</code></pre>
+
+<div class="important">
+    <strong>Important:</strong>
+    Make sure the file actually ends in <code>.csv</code>.
+    A file named <code>employee_sales.csv.txt</code> will not be the
+    same file.
+</div>
+
+
+<!-- STEP 3 -->
+
+<h3>
+    <span class="step-number">3</span>
+    Open Your Anaconda/Jupyter Environment
+</h3>
+
+<p>
+    Open Anaconda and navigate to the notebook you created for this lab.
+</p>
+
+<p>Your notebook should be named:</p>
+
+<pre><code>Module_Pandas_Matplotlib_Lab.ipynb</code></pre>
+
+
+<!-- STEP 4 -->
+
+<h3>
+    <span class="step-number">4</span>
+    Upload the CSV File
+</h3>
+
+<p>
+    Before Python can read the CSV file, the file must be available
+    inside your Anaconda/Jupyter environment.
+</p>
+
+<ol>
+    <li>Locate the file browser in your Anaconda/Jupyter environment.</li>
+    <li>Locate the <strong>Upload</strong> option.</li>
+    <li>Click Upload.</li>
+    <li>Select <code>employee_sales.csv</code> from your computer.</li>
+    <li>Wait for the upload to complete.</li>
+    <li>Verify that the CSV file appears in your file browser.</li>
+</ol>
+
+<p>
+    Ideally, your notebook and CSV file should appear in the same
+    directory:
+</p>
+
+<pre><code>Module_Pandas_Matplotlib_Lab.ipynb
+employee_sales.csv</code></pre>
+
+<div class="note">
+    <strong>Why put them in the same folder?</strong>
+    Keeping the notebook and CSV file in the same working directory
+    allows us to reference the CSV file by its filename instead of
+    specifying a complicated file path.
+</div>
+
+
+<!-- STEP 5 -->
+
+<h3>
+    <span class="step-number">5</span>
+    Import Pandas
+</h3>
+
+<p>
+    Return to your Jupyter Notebook.
+</p>
+
+<p>
+    In a new code cell, enter:
+</p>
+
+<pre><code>import pandas as pd</code></pre>
+
+<p>
+    Run the cell.
+</p>
+
+<p>
+    This imports the Pandas library and assigns it the commonly used
+    alias <code>pd</code>.
+</p>
+
+
+<!-- STEP 6 -->
+
+<h3>
+    <span class="step-number">6</span>
+    Read the CSV File
+</h3>
+
+<p>
+    We can now tell Pandas to open the CSV file.
+</p>
+
+<p>Enter the following code:</p>
+
+<pre><code>df = pd.read_csv("employee_sales.csv")</code></pre>
+
+<p>
+    Run the cell.
+</p>
+
+<div class="note">
+    You may not see any output after running this command. That is
+    completely normal. Python has loaded the data and stored it in
+    the variable <code>df</code>.
+</div>
+
+<p>
+    The command:
+</p>
+
+<pre><code>pd.read_csv("employee_sales.csv")</code></pre>
+
+<p>
+    reads the contents of the CSV file and converts the data into a
+    Pandas <strong>DataFrame</strong>.
+</p>
+
+<p>
+    We store that DataFrame in a variable named:
+</p>
+
+<pre><code>df</code></pre>
+
+
+<!-- STEP 7 -->
+
+<h3>
+    <span class="step-number">7</span>
+    Display the Imported Data
+</h3>
+
+<p>
+    Now let's make sure the import worked.
+</p>
+
+<p>In a new cell, enter:</p>
+
+<pre><code>df</code></pre>
+
+<p>Run the cell.</p>
+
+<p>You should see a table similar to:</p>
+
+<table>
+    <tr>
+        <th>Employee</th>
+        <th>Department</th>
+        <th>Sales</th>
+        <th>Hours_Worked</th>
+    </tr>
+
+    <tr>
+        <td>Alex</td>
+        <td>Sales</td>
+        <td>12500</td>
+        <td>40</td>
+    </tr>
+
+    <tr>
+        <td>Maria</td>
+        <td>IT</td>
+        <td>8500</td>
+        <td>38</td>
+    </tr>
+
+    <tr>
+        <td>Jordan</td>
+        <td>Sales</td>
+        <td>15750</td>
+        <td>45</td>
+    </tr>
+
+    <tr>
+        <td>Taylor</td>
+        <td>Marketing</td>
+        <td>11200</td>
+        <td>42</td>
+    </tr>
+
+    <tr>
+        <td>Chris</td>
+        <td>IT</td>
+        <td>9300</td>
+        <td>40</td>
+    </tr>
+
+    <tr>
+        <td>Morgan</td>
+        <td>Sales</td>
+        <td>18400</td>
+        <td>47</td>
+    </tr>
+</table>
+
+<div class="success">
+    <strong>Success!</strong>
+    If you can see the table, you have successfully imported an
+    external CSV file into Python using Pandas.
+</div>
+
+
+<!-- STEP 8 -->
+
+<h3>
+    <span class="step-number">8</span>
+    Display the First Five Records
+</h3>
+
+<p>
+    Real-world datasets may contain hundreds, thousands, or even
+    millions of records.
+</p>
+
+<p>
+    Instead of displaying the entire dataset, we can use:
+</p>
+
+<pre><code>df.head()</code></pre>
+
+<p>
+    By default, <code>head()</code> displays the first five records.
+</p>
+
+<p>
+    You can also tell Pandas exactly how many records you want to see.
+</p>
+
+<pre><code>df.head(3)</code></pre>
+
+<p>
+    This displays only the first three records.
+</p>
+
+
+<!-- STEP 9 -->
+
+<h3>
+    <span class="step-number">9</span>
+    Check the Column Names
+</h3>
+
+<p>
+    When working with an unfamiliar dataset, one of the first things
+    you should identify is the name of each column.
+</p>
+
+<p>Enter:</p>
+
+<pre><code>df.columns</code></pre>
+
+<p>You should see something similar to:</p>
+
+<pre><code>Index(['Employee', 'Department', 'Sales', 'Hours_Worked'], dtype='object')</code></pre>
+
+<p>
+    These names are important because we use them when accessing data.
+</p>
+
+<p>For example:</p>
+
+<pre><code>df["Sales"]</code></pre>
+
+<p>
+    displays the <code>Sales</code> column.
+</p>
+
+
+<!-- STEP 10 -->
+
+<h3>
+    <span class="step-number">10</span>
+    Check the Data Types
+</h3>
+
+<p>
+    We should also determine what type of data Python believes is
+    contained in each column.
+</p>
+
+<pre><code>df.info()</code></pre>
+
+<p>
+    The results will include information similar to:
+</p>
+
+<pre><code>Employee        object
+Department      object
+Sales            int64
+Hours_Worked     int64</code></pre>
+
+<p>
+    In this dataset:
+</p>
+
+<ul>
+    <li><code>object</code> represents text-based values.</li>
+    <li><code>int64</code> represents whole numbers.</li>
+</ul>
+
+<div class="question">
+    <strong>Question:</strong>
+    Why is it important to know the data type of a column before
+    performing calculations?
+</div>
+
+
+<!-- STEP 11 -->
+
+<h3>
+    <span class="step-number">11</span>
+    Generate Descriptive Statistics
+</h3>
+
+<p>
+    Pandas can automatically calculate basic statistics for the
+    numerical columns in our CSV file.
+</p>
+
+<pre><code>df.describe()</code></pre>
+
+<p>
+    The output includes statistics such as:
+</p>
+
+<ul>
+    <li>Count</li>
+    <li>Mean</li>
+    <li>Standard deviation</li>
+    <li>Minimum</li>
+    <li>25th percentile</li>
+    <li>50th percentile</li>
+    <li>75th percentile</li>
+    <li>Maximum</li>
+</ul>
+
+
+<!-- STEP 12 -->
+
+<h3>
+    <span class="step-number">12</span>
+    Perform Calculations on the Imported Data
+</h3>
+
+<p>
+    Now that our CSV file has been loaded into a DataFrame, we can
+    perform calculations.
+</p>
+
+<h4>Total Sales</h4>
+
+<pre><code>df["Sales"].sum()</code></pre>
+
+<h4>Average Sales</h4>
+
+<pre><code>df["Sales"].mean()</code></pre>
+
+<h4>Highest Sales</h4>
+
+<pre><code>df["Sales"].max()</code></pre>
+
+<h4>Lowest Sales</h4>
+
+<pre><code>df["Sales"].min()</code></pre>
+
+
+<!-- STEP 13 -->
+
+<h3>
+    <span class="step-number">13</span>
+    Select Columns from the Imported Data
+</h3>
+
+<p>
+    Display only employee names:
+</p>
+
+<pre><code>df["Employee"]</code></pre>
+
+<p>
+    Display employee names and sales:
+</p>
+
+<pre><code>df[["Employee", "Sales"]]</code></pre>
+
+
+<!-- STEP 14 -->
+
+<h3>
+    <span class="step-number">14</span>
+    Filter the Imported Data
+</h3>
+
+<p>
+    Suppose management only wants to see employees with more than
+    $10,000 in sales.
+</p>
+
+<pre><code>df[df["Sales"] &gt; 10000]</code></pre>
+
+<p>
+    We can also filter by department.
+</p>
+
+<pre><code>df[df["Department"] == "Sales"]</code></pre>
+
+<div class="question">
+    <strong>Question:</strong>
+    Modify the code so that it displays only employees with more
+    than <strong>$12,000</strong> in sales.
+</div>
+
+
+<!-- STEP 15 -->
+
+<h3>
+    <span class="step-number">15</span>
+    Sort the Imported Data
+</h3>
+
+<p>
+    Sort the employees from highest sales to lowest sales:
+</p>
+
+<pre><code>df.sort_values(by="Sales", ascending=False)</code></pre>
+
+<p>
+    Setting <code>ascending=False</code> tells Pandas to sort from
+    highest to lowest.
+</p>
+
+
+<!-- STEP 16 -->
+
+<h3>
+    <span class="step-number">16</span>
+    Create a New Column
+</h3>
+
+<p>
+    We can create new information using the data imported from our
+    CSV file.
+</p>
+
+<p>
+    Calculate sales per hour:
+</p>
+
+<pre><code>df["Sales_Per_Hour"] = df["Sales"] / df["Hours_Worked"]</code></pre>
+
+<p>Round the results:</p>
+
+<pre><code>df["Sales_Per_Hour"] = df["Sales_Per_Hour"].round(2)
+
+df</code></pre>
+
+
+<!-- STEP 17 -->
+
+<h3>
+    <span class="step-number">17</span>
+    Create a Chart from the CSV Data
+</h3>
+
+<p>
+    We can now take the information imported from our CSV file and
+    visualize it using Matplotlib.
+</p>
+
+<p>First, import Matplotlib:</p>
+
+<pre><code>import matplotlib.pyplot as plt</code></pre>
+
+<p>Create a bar chart:</p>
+
+<pre><code>plt.bar(df["Employee"], df["Sales"])
+
+plt.title("Sales by Employee")
+plt.xlabel("Employee")
+plt.ylabel("Sales")
+
+plt.show()</code></pre>
+
+<p>
+    Notice that we are not manually entering the employee names or
+    sales values into the chart.
+</p>
+
+<p>
+    Matplotlib is retrieving the information directly from the
+    DataFrame that was created from our CSV file.
+</p>
+
+
+<!-- STEP 18 -->
+
+<h3>
+    <span class="step-number">18</span>
+    Group CSV Data and Create a Chart
+</h3>
+
+<p>
+    Let's calculate total sales for each department.
+</p>
+
+<pre><code>department_sales = df.groupby("Department")["Sales"].sum()
+
+department_sales</code></pre>
+
+<p>
+    Now visualize those results:
+</p>
+
+<pre><code>department_sales.plot(kind="bar")
+
+plt.title("Total Sales by Department")
+plt.xlabel("Department")
+plt.ylabel("Total Sales")
+
+plt.show()</code></pre>
+
+
+<!-- TROUBLESHOOTING -->
+
+<h2>Troubleshooting CSV Imports</h2>
+
+<p>
+    When learning Python, one of the most common problems students
+    encounter is Python being unable to locate the CSV file.
+</p>
+
+<h3>FileNotFoundError</h3>
+
+<p>You may see an error similar to:</p>
+
+<pre><code>FileNotFoundError: [Errno 2] No such file or directory:
+'employee_sales.csv'</code></pre>
+
+<p>
+    This usually means Python cannot find the CSV file.
+</p>
+
+<h3>Step 1: Check Your Current Working Directory</h3>
+
+<p>Enter:</p>
+
+<pre><code>import os
+
+os.getcwd()</code></pre>
+
+<p>
+    This displays the folder Python is currently using.
+</p>
+
+
+<h3>Step 2: See What Files Python Can Find</h3>
+
+<p>Enter:</p>
+
+<pre><code>os.listdir()</code></pre>
+
+<p>
+    Look through the results for:
+</p>
+
+<pre><code>employee_sales.csv</code></pre>
+
+<p>
+    If the CSV file is not listed, it is probably located in a
+    different directory.
+</p>
+
+
+<h3>Step 3: Verify the Filename</h3>
+
+<p>
+    Make sure the filename used in Python exactly matches the actual
+    filename.
+</p>
+
+<p>Correct:</p>
+
+<pre><code>df = pd.read_csv("employee_sales.csv")</code></pre>
+
+<p>Incorrect examples:</p>
+
+<pre><code>df = pd.read_csv("Employee_Sales.csv")
+
+df = pd.read_csv("employee_sales")
+
+df = pd.read_csv("employee_sales.txt")</code></pre>
+
+<div class="important">
+    <strong>Remember:</strong>
+    Filenames, spaces, underscores, and file extensions matter.
+    Always verify the actual filename before changing your Python code.
+</div>
+
+
+<!-- WORKFLOW -->
+
+<h2>Understanding the Complete Data Analytics Workflow</h2>
+
+<p>
+    At this point, you have completed a basic data analytics workflow.
+</p>
+
+<pre><code>CSV File
+   ↓
+pd.read_csv()
+   ↓
+Pandas DataFrame
+   ↓
+Explore the Data
+   ↓
+Filter / Sort / Calculate
+   ↓
+Group the Data
+   ↓
+Matplotlib
+   ↓
+Charts and Visualizations
+   ↓
+Business Insights</code></pre>
+
+<div class="success">
+    <strong>Key Concept:</strong>
+    Pandas allows us to import and analyze the data, while Matplotlib
+    allows us to visually communicate what the data tells us.
+</div>
+
+
+<!-- CSV PRACTICE -->
+
+<div class="challenge">
+
+    <h2>CSV Import Practice</h2>
+
+    <p>
+        Using <code>employee_sales.csv</code>, complete the following
+        tasks without copying the answers from previous sections.
+    </p>
+
+    <ol>
+        <li>
+            Import Pandas using the alias <code>pd</code>.
+        </li>
+
+        <li>
+            Import <code>employee_sales.csv</code> into a DataFrame
+            named <code>sales</code>.
+        </li>
+
+        <li>
+            Display the first five records.
+        </li>
+
+        <li>
+            Display the column names.
+        </li>
+
+        <li>
+            Display information about the DataFrame.
+        </li>
+
+        <li>
+            Calculate total sales.
+        </li>
+
+        <li>
+            Calculate average sales.
+        </li>
+
+        <li>
+            Display employees with sales greater than $12,000.
+        </li>
+
+        <li>
+            Sort the employees from highest to lowest sales.
+        </li>
+
+        <li>
+            Calculate total sales by department.
+        </li>
+
+        <li>
+            Create a bar chart showing sales by employee.
+        </li>
+
+        <li>
+            Create a chart showing total sales by department.
+        </li>
+    </ol>
+
+</div>
 
     <!-- ===================================================== -->
     <!-- PART 10 -->
