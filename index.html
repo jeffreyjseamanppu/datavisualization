@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab - Introduction to Pandas with Anaconda Online</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            margin-top: 10px;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #003366;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 35px;
+        }
+
+        h3 {
+            color: #444;
+        }
+
+        .objective {
+            background-color: #eef6ff;
+            padding: 20px;
+            border-left: 5px solid #0066cc;
+            margin: 20px 0;
+        }
+
+        .question {
+            background-color: #fff8dc;
+            padding: 15px;
+            border-left: 5px solid #e0a800;
+            margin: 20px 0;
+        }
+
+        .challenge {
+            background-color: #eefbea;
+            padding: 20px;
+            border-left: 5px solid #28a745;
+            margin: 20px 0;
+        }
+
+        .note {
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-left: 5px solid #666;
+            margin: 20px 0;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #003366;
+            color: white;
+        }
+
+        a {
+            color: #0066cc;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .button:hover {
+            background-color: #004c99;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Lab: Introduction to Pandas</h1>
+    <p>Using Python, Pandas, and Anaconda Online</p>
+</header>
+
+<main>
+
+    <h2>Lab Overview</h2>
+
+    <p>
+        In this lab, you will be introduced to <strong>Pandas</strong>,
+        one of the most commonly used Python libraries for working with
+        structured data.
+    </p>
+
+    <p>
+        You will use an online Anaconda environment to create a Python
+        notebook, build a dataset, analyze the data, and answer several
+        business-related questions.
+    </p>
+
+    <p><strong>Estimated Time:</strong> 45–60 minutes</p>
+
+    <div class="objective">
+        <h3>Learning Objectives</h3>
+
+        <p>After completing this lab, you should be able to:</p>
+
+        <ul>
+            <li>Import the Pandas Python library.</li>
+            <li>Create a Pandas DataFrame.</li>
+            <li>Display and inspect data.</li>
+            <li>Select columns from a DataFrame.</li>
+            <li>Filter data using conditions.</li>
+            <li>Calculate basic statistics.</li>
+            <li>Create calculated columns.</li>
+            <li>Sort data.</li>
+            <li>Group and summarize data.</li>
+        </ul>
+    </div>
+
+    <h2>Part 1: Open Anaconda Online</h2>
+
+    <p>
+        Open the Anaconda website and access the online Python/Jupyter
+        environment provided by your instructor.
+    </p>
+
+    <a class="button"
+       href="https://www.anaconda.com/"
+       target="_blank">
+       Open Anaconda
+    </a>
+
+    <p>Create a new notebook and name it:</p>
+
+    <pre><code>Module_Pandas_Lab.ipynb</code></pre>
+
+    <div class="note">
+        <strong>Important:</strong> Run each code cell after entering the
+        Python code. Make sure you examine the output before continuing
+        to the next section.
+    </div>
+
+    <h2>Part 2: Import Pandas</h2>
+
+    <p>
+        Pandas must first be imported before we can use it.
+    </p>
+
+    <p>Enter the following code in your first notebook cell:</p>
+
+    <pre><code>import pandas as pd</code></pre>
+
+    <p>
+        The statement imports the Pandas library and gives it the alias
+        <code>pd</code>.
+    </p>
+
+    <div class="question">
+        <strong>Question 1:</strong>
+        What does <code>pd</code> represent in the statement
+        <code>import pandas as pd</code>?
+    </div>
+
+
+    <h2>Part 3: Create a Dataset</h2>
+
+    <p>
+        Imagine that you work for a company that wants to analyze employee
+        sales performance.
+    </p>
+
+    <p>Copy the following code into a new notebook cell:</p>
+
+    <pre><code>data = {
+    "Employee": ["Alex", "Maria", "Jordan", "Taylor", "Chris", "Morgan"],
+    "Department": ["Sales", "IT", "Sales", "Marketing", "IT", "Sales"],
+    "Sales": [12500, 8500, 15750, 11200, 9300, 18400],
+    "Hours_Worked": [40, 38, 45, 42, 40, 47]
+}
+
+df = pd.DataFrame(data)
+
+df</code></pre>
+
+    <p>
+        Running the cell should display the data as a table.
+    </p>
+
+    <div class="question">
+        <strong>Question 2:</strong>
+        What does the following line of Python code do?
+        <pre><code>df = pd.DataFrame(data)</code></pre>
+    </div>
+
+
+    <h2>Part 4: Explore the Data</h2>
+
+    <p>
+        Pandas provides several commands that allow us to quickly examine
+        a dataset.
+    </p>
+
+    <h3>Display the First Five Rows</h3>
+
+    <pre><code>df.head()</code></pre>
+
+    <h3>View Dataset Information</h3>
+
+    <pre><code>df.info()</code></pre>
+
+    <h3>View Descriptive Statistics</h3>
+
+    <pre><code>df.describe()</code></pre>
+
+    <h3>Determine the Dataset Size</h3>
+
+    <pre><code>df.shape</code></pre>
+
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Purpose</th>
+        </tr>
+
+        <tr>
+            <td><code>df.head()</code></td>
+            <td>Displays the first five rows.</td>
+        </tr>
+
+        <tr>
+            <td><code>df.info()</code></td>
+            <td>Displays columns and data types.</td>
+        </tr>
+
+        <tr>
+            <td><code>df.describe()</code></td>
+            <td>Calculates descriptive statistics.</td>
+        </tr>
+
+        <tr>
+            <td><code>df.shape</code></td>
+            <td>Returns the number of rows and columns.</td>
+        </tr>
+    </table>
+
+
+    <h2>Part 5: Select Data</h2>
+
+    <p>
+        DataFrames allow us to retrieve specific columns instead of
+        displaying the entire dataset.
+    </p>
+
+    <h3>Select One Column</h3>
+
+    <pre><code>df["Employee"]</code></pre>
+
+    <h3>Select Multiple Columns</h3>
+
+    <pre><code>df[["Employee", "Sales"]]</code></pre>
+
+    <div class="question">
+        <strong>Question 3:</strong>
+        What is the difference between selecting one column and selecting
+        multiple columns?
+    </div>
+
+
+    <h2>Part 6: Filter the Data</h2>
+
+    <p>
+        One of the most powerful features of Pandas is the ability to filter
+        data based on conditions.
+    </p>
+
+    <h3>Employees with More Than $10,000 in Sales</h3>
+
+    <pre><code>high_sales = df[df["Sales"] &gt; 10000]
+
+high_sales</code></pre>
+
+    <h3>Employees in the Sales Department</h3>
+
+    <pre><code>sales_department = df[df["Department"] == "Sales"]
+
+sales_department</code></pre>
+
+
+    <h2>Part 7: Calculate Statistics</h2>
+
+    <h3>Total Sales</h3>
+
+    <pre><code>df["Sales"].sum()</code></pre>
+
+    <h3>Average Sales</h3>
+
+    <pre><code>df["Sales"].mean()</code></pre>
+
+    <h3>Highest Sales</h3>
+
+    <pre><code>df["Sales"].max()</code></pre>
+
+    <h3>Lowest Sales</h3>
+
+    <pre><code>df["Sales"].min()</code></pre>
+
+    <div class="question">
+        <strong>Question 4:</strong>
+        What are the total sales and average sales for the company?
+    </div>
+
+
+    <h2>Part 8: Create a Calculated Column</h2>
+
+    <p>
+        Management wants to know how many dollars in sales each employee
+        generates for every hour worked.
+    </p>
+
+    <p>Create a new column called <code>Sales_Per_Hour</code>:</p>
+
+    <pre><code>df["Sales_Per_Hour"] = df["Sales"] / df["Hours_Worked"]
+
+df</code></pre>
+
+    <p>Round the values to two decimal places:</p>
+
+    <pre><code>df["Sales_Per_Hour"] = df["Sales_Per_Hour"].round(2)
+
+df</code></pre>
+
+    <div class="question">
+        <strong>Question 5:</strong>
+        Which employee has the highest sales-per-hour value?
+    </div>
+
+    <p>You can use Pandas to determine the answer:</p>
+
+    <pre><code>df.loc[df["Sales_Per_Hour"].idxmax()]</code></pre>
+
+
+    <h2>Part 9: Sort the Data</h2>
+
+    <p>
+        Sort employees from highest to lowest sales:
+    </p>
+
+    <pre><code>df.sort_values(by="Sales", ascending=False)</code></pre>
+
+    <p>
+        Now sort employees by the number of hours worked:
+    </p>
+
+    <pre><code>df.sort_values(by="Hours_Worked")</code></pre>
+
+
+    <h2>Part 10: Group the Data</h2>
+
+    <p>
+        Pandas can group records together to answer business questions.
+    </p>
+
+    <h3>Average Sales by Department</h3>
+
+    <pre><code>df.groupby("Department")["Sales"].mean()</code></pre>
+
+    <h3>Total Sales by Department</h3>
+
+    <pre><code>df.groupby("Department")["Sales"].sum()</code></pre>
+
+    <div class="question">
+        <strong>Question 6:</strong>
+        Which department has the highest total sales?
+    </div>
+
+
+    <h2>Part 11: Export Your Results</h2>
+
+    <p>
+        Pandas can also save DataFrames as files.
+    </p>
+
+    <p>Export the completed dataset to a CSV file:</p>
+
+    <pre><code>df.to_csv("employee_sales.csv", index=False)</code></pre>
+
+    <p>
+        The <code>index=False</code> option prevents Pandas from adding the
+        DataFrame row numbers as another column in the CSV file.
+    </p>
+
+
+    <div class="challenge">
+
+        <h2>Student Challenge</h2>
+
+        <p>
+            You have now been asked to expand the employee dataset and
+            perform additional analysis.
+        </p>
+
+        <h3>Step 1</h3>
+
+        <p>
+            Add <strong>two additional employees</strong> to the dataset.
+            Each employee must have:
+        </p>
+
+        <ul>
+            <li>Name</li>
+            <li>Department</li>
+            <li>Sales amount</li>
+            <li>Hours worked</li>
+        </ul>
+
+        <h3>Step 2</h3>
+
+        <p>Use Pandas to answer the following questions:</p>
+
+        <ol>
+            <li>Who has the highest sales?</li>
+            <li>What are the company's average sales?</li>
+            <li>Which employees have sales greater than $12,000?</li>
+            <li>What are the total sales for each department?</li>
+            <li>Who has the highest sales per hour?</li>
+            <li>
+                Display the entire DataFrame sorted from highest to lowest
+                sales.
+            </li>
+        </ol>
+
+        <h3>Step 3</h3>
+
+        <p>
+            Export your final DataFrame as:
+        </p>
+
+        <pre><code>employee_sales.csv</code></pre>
+
+    </div>
+
+
+    <h2>Submission Requirements</h2>
+
+    <p>
+        Submit your completed Jupyter Notebook
+        (<code>.ipynb</code>) as directed by your instructor.
+    </p>
+
+    <p>Your notebook should contain:</p>
+
+    <ul>
+        <li>All Python code from the lab.</li>
+        <li>Output from your Python code.</li>
+        <li>Answers to Questions 1–6.</li>
+        <li>Your two additional employee records.</li>
+        <li>The completed Student Challenge.</li>
+        <li>Your final DataFrame.</li>
+    </ul>
+
+
+    <h2>What You Learned</h2>
+
+    <p>
+        In this lab, you used Pandas to create and analyze a dataset.
+        You learned how to import Pandas, create DataFrames, select data,
+        filter records, calculate statistics, create new columns, sort
+        records, group data, and export results.
+    </p>
+
+    <p>
+        These techniques form the foundation for using Python and Pandas
+        for <strong>data analytics, business intelligence, and data
+        science</strong>.
+    </p>
+
+</main>
+
+<footer>
+    <p>Python &amp; Pandas Lab | Course Learning Activity</p>
+</footer>
+
+</body>
+</html>
